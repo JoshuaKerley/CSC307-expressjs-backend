@@ -101,7 +101,11 @@ app.post('/users', (req, res) => {
     res.status(201).end();
 });
 
-function addUser(user){
+function addUser(user) {
+
+    if(!user.id)
+        user.id = Math.floor(Math.random() * 1000000);
+
     users['users_list'].push(user);
 }
 
