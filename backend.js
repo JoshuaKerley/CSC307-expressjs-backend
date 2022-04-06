@@ -86,7 +86,7 @@ app.delete('/users/:id', (req, res) => {
         res.status(404).send('Resource not found.');
     else {
         users['users_list'].splice(users['users_list'].indexOf(result), 1)
-        res.send(result);
+        res.status(204).end();
     }
 });
 
@@ -104,7 +104,7 @@ app.post('/users', (req, res) => {
 function addUser(user) {
 
     if(!user.id)
-        user.id = Math.floor(Math.random() * 1000000);
+        user.id = Math.floor(Math.random() * 1000000).toString();
 
     users['users_list'].push(user);
 }
